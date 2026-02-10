@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Para Meu Amor ❤️</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <div id="welcome-screen" class="screen active">
+            <div class="fade-message">
+                <h1 class="fade-in">Olá, meu amor...</h1>
+                <p class="fade-in delay-1">Hoje é um dia muito especial</p>
+                <p class="fade-in delay-2">Faz 1 ano desde que começamos essa jornada juntos</p>
+                <p class="fade-in delay-3">E eu preparei algo especial para você...</p>
+                <button class="fade-in delay-4" onclick="nextScreen('qualities-screen')">Começar ❤️</button>
+            </div>
+        </div>
+
+        <div id="qualities-screen" class="screen">
+            <div class="content">
+                <h2>Por que eu te namoro?</h2>
+                <p class="subtitle">Selecione todas as qualidades que se aplicam a você 😊</p>
+                <div class="qualities-grid">
+                    <button class="quality-btn good" data-quality="good" onclick="selectQuality(this)">Linda</button>
+                    <button class="quality-btn good" data-quality="good" onclick="selectQuality(this)">Inteligente</button>
+                    <button class="quality-btn bad" data-quality="bad" onclick="selectQuality(this)">Chatinha</button>
+                    <button class="quality-btn good" data-quality="good" onclick="selectQuality(this)">Carinhosa</button>
+                    <button class="quality-btn bad" data-quality="bad" onclick="selectQuality(this)">Egoísta</button>
+                    <button class="quality-btn good" data-quality="good" onclick="selectQuality(this)">Cheia de gracinha</button>
+                    <button class="quality-btn good" data-quality="good" onclick="selectQuality(this)">Acolhedora</button>
+                    <button class="quality-btn bad" data-quality="bad" onclick="selectQuality(this)">Mal-humorada</button>
+                    <button class="quality-btn good" data-quality="good" onclick="selectQuality(this)">Incrível</button>
+                    <button class="quality-btn bad" data-quality="bad" onclick="selectQuality(this)">Preguiçosa</button>
+                    <button class="quality-btn good" data-quality="good" onclick="selectQuality(this)">Gostosa</button>
+                    <button class="quality-btn bad" data-quality="bad" onclick="selectQuality(this)">Irritante</button>
+                    <button class="quality-btn good" data-quality="good" onclick="selectQuality(this)">Psicólega</button>
+                    <button class="quality-btn bad" data-quality="bad" onclick="selectQuality(this)">Teimosa</button>
+                    <button class="quality-btn good" data-quality="good" onclick="selectQuality(this)">Bunda linda</button>
+                </div>
+                <div class="error-message" id="qualities-error"></div>
+                <button id="qualities-next" class="next-btn hidden" onclick="nextScreen('best-person-screen')">Continuar →</button>
+            </div>
+        </div>
+
+        <div id="best-person-screen" class="screen">
+            <div class="content">
+                <h2>Competição da Melhor Pessoa do Mundo</h2>
+                <p class="subtitle">Quem é a melhor pessoa do mundo? 🌟</p>
+                <div class="images-grid">
+                    <div class="image-option" onclick="selectPerson(this, false)">
+                        <div class="image-placeholder">🦆</div>
+                        <p>Pato</p>
+                    </div>
+                    <div class="image-option" onclick="selectPerson(this, false)">
+                        <div class="image-placeholder">🎤</div>
+                        <p>Cantora Famosa</p>
+                    </div>
+                    <div class="image-option correct" onclick="selectPerson(this, true)">
+                        <div class="image-placeholder">👸</div>
+                        <p>Você ❤️</p>
+                    </div>
+                    <div class="image-option" onclick="selectPerson(this, false)">
+                        <div class="image-placeholder">🎭</div>
+                        <p>Darth Vader</p>
+                    </div>
+                    <div class="image-option" onclick="selectPerson(this, false)">
+                        <div class="image-placeholder">📺</div>
+                        <p>Apresentador</p>
+                    </div>
+                    <div class="image-option" onclick="selectPerson(this, false)">
+                        <div class="image-placeholder">🐱</div>
+                        <p>Gatinho</p>
+                    </div>
+                </div>
+                <div class="error-message" id="person-error"></div>
+            </div>
+        </div>
+
+        <div id="question-screen" class="screen">
+            <div class="content">
+                <h2 class="big-question">Quer continuar sendo minha namorada?</h2>
+                <p class="subtitle">Celebrando nosso primeiro ano juntos... 💕</p>
+                <div class="buttons-container">
+                    <button class="yes-btn" onclick="showLoveLetter()">Sim! ❤️</button>
+                    <button class="no-btn" id="no-btn" onclick="handleNo()">Não</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="love-letter-screen" class="screen">
+            <div class="content love-letter">
+                <h2>Meu Amor...</h2>
+                <div class="letter-content">
+                    <p>Faz um ano desde que você entrou na minha vida e mudou tudo.</p>
+                    <p>Cada dia ao seu lado é uma nova aventura, cada momento é especial.</p>
+                    <p>Você me faz sorrir quando estou triste, me faz rir quando preciso, e me faz sentir amado todos os dias.</p>
+                    <p>Obrigado por ser quem você é, por me aceitar como eu sou, e por tornar minha vida infinitamente melhor.</p>
+                    <p>Aqui está para muitos mais anos juntos, criando memórias, compartilhando sonhos e construindo nosso futuro.</p>
+                    <p class="signature">Te amo mais do que palavras podem expressar ❤️</p>
+                    <div class="counter-container">
+                        <p class="counter-label">Juntos há:</p>
+                        <div id="time-counter" class="time-counter">
+                            <div class="time-unit">
+                                <span class="time-value" id="days">0</span>
+                                <span class="time-label">dias</span>
+                            </div>
+                            <div class="time-unit">
+                                <span class="time-value" id="hours">0</span>
+                                <span class="time-label">horas</span>
+                            </div>
+                            <div class="time-unit">
+                                <span class="time-value" id="minutes">0</span>
+                                <span class="time-label">minutos</span>
+                            </div>
+                            <div class="time-unit">
+                                <span class="time-value" id="seconds">0</span>
+                                <span class="time-label">segundos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hearts-animation">
+                    <span class="heart">❤️</span>
+                    <span class="heart">💕</span>
+                    <span class="heart">💖</span>
+                    <span class="heart">💗</span>
+                    <span class="heart">💝</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">💕</span>
+                    <span class="heart">💖</span>
+                    <span class="heart">💗</span>
+                    <span class="heart">💝</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">💕</span>
+                    <span class="heart">💖</span>
+                    <span class="heart">💗</span>
+                    <span class="heart">💝</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">💕</span>
+                    <span class="heart">💖</span>
+                    <span class="heart">💗</span>
+                    <span class="heart">💝</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

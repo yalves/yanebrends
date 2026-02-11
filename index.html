@@ -121,6 +121,7 @@
                         </div>
                     </div>
                 </div>
+                <button class="music-link-btn" onclick="nextScreen('music-screen')">🎵 Ouvir Nossa Playlist 🎵</button>
                 <div class="hearts-animation">
                     <span class="heart">❤️</span>
                     <span class="heart">💕</span>
@@ -145,6 +146,111 @@
                 </div>
             </div>
         </div>
+
+        <div id="music-screen" class="screen">
+            <div class="content music-player">
+                <h2>Nossa Playlist ❤️</h2>
+                <p class="subtitle">Músicas que marcaram nossa história</p>
+
+                <div class="music-list">
+                    <div class="song-item" data-song="green-day-last-night-on-earth">
+                        <div class="song-info">
+                            <div class="song-icon">🎸</div>
+                            <div class="song-details">
+                                <div class="song-title">Last Night on Earth</div>
+                                <div class="song-artist">Green Day</div>
+                            </div>
+                        </div>
+                        <button class="play-btn" onclick="playSong('green-day-last-night-on-earth')">▶️</button>
+                    </div>
+
+                    <div class="song-item" data-song="maroon-5-she-will-be-loved">
+                        <div class="song-info">
+                            <div class="song-icon">💕</div>
+                            <div class="song-details">
+                                <div class="song-title">She Will Be Loved</div>
+                                <div class="song-artist">Maroon 5</div>
+                            </div>
+                        </div>
+                        <button class="play-btn" onclick="playSong('maroon-5-she-will-be-loved')">▶️</button>
+                    </div>
+
+                    <div class="song-item" data-song="plain-white-ts-hey-there-delilah">
+                        <div class="song-info">
+                            <div class="song-icon">🎵</div>
+                            <div class="song-details">
+                                <div class="song-title">Hey There Delilah</div>
+                                <div class="song-artist">Plain White T's</div>
+                            </div>
+                        </div>
+                        <button class="play-btn" onclick="playSong('plain-white-ts-hey-there-delilah')">▶️</button>
+                    </div>
+
+                    <div class="song-item" data-song="foo-fighters-times-like-these">
+                        <div class="song-info">
+                            <div class="song-icon">🎤</div>
+                            <div class="song-details">
+                                <div class="song-title">Times Like These</div>
+                                <div class="song-artist">Foo Fighters</div>
+                            </div>
+                        </div>
+                        <button class="play-btn" onclick="playSong('foo-fighters-times-like-these')">▶️</button>
+                    </div>
+
+                    <div class="song-item" data-song="los-hermanos-ultimo-romance">
+                        <div class="song-info">
+                            <div class="song-icon">🎼</div>
+                            <div class="song-details">
+                                <div class="song-title">Último Romance</div>
+                                <div class="song-artist">Los Hermanos</div>
+                            </div>
+                        </div>
+                        <button class="play-btn" onclick="playSong('los-hermanos-ultimo-romance')">▶️</button>
+                    </div>
+
+                    <div class="song-item" data-song="pearl-jam-just-breathe">
+                        <div class="song-info">
+                            <div class="song-icon">🎧</div>
+                            <div class="song-details">
+                                <div class="song-title">Just Breathe</div>
+                                <div class="song-artist">Pearl Jam</div>
+                            </div>
+                        </div>
+                        <button class="play-btn" onclick="playSong('pearl-jam-just-breathe')">▶️</button>
+                    </div>
+
+                    <div class="song-item" data-song="oasis-wonderwall">
+                        <div class="song-info">
+                            <div class="song-icon">🌟</div>
+                            <div class="song-details">
+                                <div class="song-title">Wonderwall</div>
+                                <div class="song-artist">Oasis</div>
+                            </div>
+                        </div>
+                        <button class="play-btn" onclick="playSong('oasis-wonderwall')">▶️</button>
+                    </div>
+
+                    <div class="song-item" data-song="copeland-have-i-always-loved-you">
+                        <div class="song-info">
+                            <div class="song-icon">💫</div>
+                            <div class="song-details">
+                                <div class="song-title">Have I Always Loved You</div>
+                                <div class="song-artist">Copeland</div>
+                            </div>
+                        </div>
+                        <button class="play-btn" onclick="playSong('copeland-have-i-always-loved-you')">▶️</button>
+                    </div>
+                </div>
+
+                <div class="now-playing" id="now-playing">
+                    <div class="now-playing-icon">🎶</div>
+                    <div class="now-playing-text">Selecione uma música para começar</div>
+                </div>
+
+                <audio id="audio-player" preload="none"></audio>
+            </div>
+        </div>
+    </div>
     </div>
 
     <script src="script.js"></script>

@@ -135,6 +135,99 @@ function startCounter() {
     setInterval(updateCounter, 1000);
 }
 
+let currentAudio = null;
+let currentSongId = null;
+
+const songs = {
+    'green-day-last-night-on-earth': {
+        title: 'Last Night on Earth',
+        artist: 'Green Day',
+        file: 'music/green-day-last-night-on-earth.mp4'
+    },
+    'maroon-5-she-will-be-loved': {
+        title: 'She Will Be Loved',
+        artist: 'Maroon 5',
+        file: 'music/maroon-5-she-will-be-loved.mp4'
+    },
+    'plain-white-ts-hey-there-delilah': {
+        title: 'Hey There Delilah',
+        artist: 'Plain White T\'s',
+        file: 'music/plain-white-ts-hey-there-delilah.mp4'
+    },
+    'foo-fighters-times-like-these': {
+        title: 'Times Like These',
+        artist: 'Foo Fighters',
+        file: 'music/foo-fighters-times-like-these.mp4'
+    },
+    'los-hermanos-ultimo-romance': {
+        title: 'Último Romance',
+        artist: 'Los Hermanos',
+        file: 'music/los-hermanos-ultimo-romance.mp4'
+    },
+    'pearl-jam-just-breathe': {
+        title: 'Just Breathe',
+        artist: 'Pearl Jam',
+        file: 'music/pearl-jam-just-breathe.mp4'
+    },
+    'oasis-wonderwall': {
+        title: 'Wonderwall',
+        artist: 'Oasis',
+        file: 'music/oasis-wonderwall.mp4'
+    },
+    'copeland-have-i-always-loved-you': {
+        title: 'Have I Always Loved You',
+        artist: 'Copeland',
+        file: 'music/copeland-have-i-always-loved-you.mp4'
+    }
+};
+
+function playSong(songId) {
+    const audioPlayer = document.getElementById('audio-player');
+    const nowPlayingText = document.querySelector('.now-playing-text');
+    const song = songs[songId];
+
+    if (!song) {
+        console.error('Song not found:', songId);
+        return;
+    }
+
+    const allSongItems = document.querySelectorAll('.song-item');
+    allSongItems.forEach(item => item.classList.remove('playing'));
+
+    const currentSongItem = document.querySelector(`[data-song="${songId}"]`);
+
+    if (currentSongId === songId && !audioPlayer.paused) {
+        audioPlayer.pause();
+        currentSongItem.classList.remove('playing');
+        const playBtn = currentSongItem.querySelector('.play-btn');
+        playBtn.textContent = '▶️';
+        nowPlayingText.textContent = 'Música pausada';
+        return;
+    }
+
+    audioPlayer.src = song.file;
+    audioPlayer.load();
+
+    audioPlayer.play().then(() => {
+        currentSongId = songId;
+        currentSongItem.classList.add('playing');
+        const playBtn = currentSongItem.querySelector('.play-btn');
+        playBtn.textContent = '⏸️';
+        nowPlayingText.textContent = `Tocando: ${song.title} - ${song.artist}`;
+    }).catch(error => {
+        console.error('Error playing audio:', error);
+        nowPlayingText.textContent = 'Erro ao carregar música. Adicione os arquivos na pasta "music/"';
+    });
+
+    audioPlayer.onended = () => {
+        currentSongItem.classList.remove('playing');
+        const playBtn = currentSongItem.querySelector('.play-btn');
+        playBtn.textContent = '▶️';
+        nowPlayingText.textContent = 'Selecione uma música para começar';
+        currentSongId = null;
+    };
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const welcomeScreen = document.getElementById('welcome-screen');
     if (welcomeScreen) {

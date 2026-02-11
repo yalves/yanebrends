@@ -4,23 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Para Meu Amor ❤️</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦀</text></svg>">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="hamburger-menu">
+        <button class="hamburger-btn" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="menu-nav">
+            <a href="#" onclick="nextScreen('welcome-screen'); toggleMenu(); return false;">Início</a>
+            <!-- <a href="#" onclick="nextScreen('qualities-screen'); toggleMenu(); return false;">Qualidades</a>
+            <a href="#" onclick="nextScreen('competition-screen'); toggleMenu(); return false;">Competição</a>
+            <a href="#" onclick="nextScreen('wheel-screen'); toggleMenu(); return false;">Roda da Sorte</a>
+            <a href="#" onclick="nextScreen('love-letter-screen'); toggleMenu(); return false;">Carta de Amor</a>
+            <a href="#" onclick="nextScreen('question-screen'); toggleMenu(); return false;">Pergunta</a> -->
+            <a href="#" onclick="nextScreen('music-screen'); toggleMenu(); return false;">Músicas</a>
+        </nav>
+    </div>
     <div id="app">
         <div id="welcome-screen" class="screen active">
             <div class="fade-message">
-                <h1 class="fade-in">Olá, meu amor...</h1>
-                <p class="fade-in delay-1">Hoje é um dia muito especial</p>
-                <p class="fade-in delay-2">Faz 1 ano desde que começamos essa jornada juntos</p>
-                <p class="fade-in delay-3">E eu preparei algo especial para você...</p>
+                <h1 class="fade-in">Oi, meu amor...</h1>
+                <p class="fade-in delay-1">Hoje é o dia mais especial de todos</p>
+                <p class="fade-in delay-2">Faz 1 ano desde que você não se aguentou e me pediu em namoro</p>
+                <p class="fade-in delay-3">Então eu quis preparar algo especial para você...</p>
                 <button class="fade-in delay-4" onclick="nextScreen('qualities-screen')">Começar ❤️</button>
             </div>
         </div>
 
         <div id="qualities-screen" class="screen">
             <div class="content">
-                <h2>Por que eu te namoro?</h2>
+                <h2>Pq namorar a Brends?</h2>
                 <p class="subtitle">Selecione todas as qualidades que se aplicam a você 😊</p>
                 <div class="qualities-grid">
                     <button class="quality-btn good" data-quality="good" onclick="selectQuality(this)">Linda</button>
@@ -31,61 +48,74 @@
                     <button class="quality-btn good" data-quality="good" onclick="selectQuality(this)">Cheia de gracinha</button>
                     <button class="quality-btn good" data-quality="good" onclick="selectQuality(this)">Acolhedora</button>
                     <button class="quality-btn bad" data-quality="bad" onclick="selectQuality(this)">Mal-humorada</button>
-                    <button class="quality-btn good" data-quality="good" onclick="selectQuality(this)">Incrível</button>
+                    <button class="quality-btn good" data-quality="good" onclick="selectQuality(this)">Sensível</button>
                     <button class="quality-btn bad" data-quality="bad" onclick="selectQuality(this)">Preguiçosa</button>
                     <button class="quality-btn good" data-quality="good" onclick="selectQuality(this)">Gostosa</button>
                     <button class="quality-btn bad" data-quality="bad" onclick="selectQuality(this)">Irritante</button>
                     <button class="quality-btn good" data-quality="good" onclick="selectQuality(this)">Psicólega</button>
                     <button class="quality-btn bad" data-quality="bad" onclick="selectQuality(this)">Teimosa</button>
                     <button class="quality-btn good" data-quality="good" onclick="selectQuality(this)">Bunda linda</button>
+                    <button class="quality-btn good" data-quality="good" onclick="selectQuality(this)">Adora livrinho</button>
                 </div>
                 <div class="error-message" id="qualities-error"></div>
-                <button id="qualities-next" class="next-btn hidden" onclick="nextScreen('best-person-screen')">Continuar →</button>
+                <button id="qualities-next" class="next-btn hidden" onclick="nextScreen('competition-screen')">Continuar →</button>
             </div>
         </div>
 
-        <div id="best-person-screen" class="screen">
+        <div id="competition-screen" class="screen">
             <div class="content">
                 <h2>Competição da Melhor Pessoa do Mundo</h2>
-                <p class="subtitle">Quem é a melhor pessoa do mundo? 🌟</p>
-                <div class="images-grid">
-                    <div class="image-option" onclick="selectPerson(this, false)">
-                        <div class="image-placeholder">🦆</div>
-                        <p>Pato</p>
-                    </div>
-                    <div class="image-option" onclick="selectPerson(this, false)">
-                        <div class="image-placeholder">🎤</div>
-                        <p>Cantora Famosa</p>
-                    </div>
-                    <div class="image-option correct" onclick="selectPerson(this, true)">
-                        <div class="image-placeholder">👸</div>
-                        <p>Você ❤️</p>
-                    </div>
-                    <div class="image-option" onclick="selectPerson(this, false)">
-                        <div class="image-placeholder">🎭</div>
-                        <p>Darth Vader</p>
-                    </div>
-                    <div class="image-option" onclick="selectPerson(this, false)">
-                        <div class="image-placeholder">📺</div>
-                        <p>Apresentador</p>
-                    </div>
-                    <div class="image-option" onclick="selectPerson(this, false)">
-                        <div class="image-placeholder">🐱</div>
-                        <p>Gatinho</p>
+                <p class="subtitle">Quem é a melhor pessoa? 🌟</p>
+                <div class="competition-container">
+                    <div class="vs-text">VS</div>
+                    <div class="competition-options">
+                        <div class="competition-option" id="option-left" onclick="selectCompetitor('left')">
+                            <div class="image-placeholder">
+                                <img src="images/brenda.jpeg" alt="Brenda">
+                            </div>
+                            <p>Você ❤️</p>
+                        </div>
+                        <div class="competition-option" id="option-right" onclick="selectCompetitor('right')">
+                            <div class="image-placeholder">
+                                <img src="images/doja-cat.jpg" alt="Doja Cat">
+                            </div>
+                            <p>Doja Cat</p>
+                        </div>
                     </div>
                 </div>
-                <div class="error-message" id="person-error"></div>
+                <div class="error-message" id="competition-error"></div>
+            </div>
+        </div>
+
+        <div id="wheel-screen" class="screen">
+            <div class="content">
+                <h2>Roda da Sorte! 🎡</h2>
+                <p class="subtitle">Gire a roda e veja o que você ganhou!</p>
+                <div class="wheel-container">
+                    <canvas id="wheel-canvas" width="300" height="300"></canvas>
+                    <div class="wheel-pointer">▼</div>
+                </div>
+                <button class="spin-btn" id="spin-btn" onclick="spinWheel()">Girar! 🎯</button>
+                <div class="wheel-result" id="wheel-result"></div>
+                <button class="hidden" id="wheel-next" onclick="nextScreen('love-letter-screen')">Continuar ❤️</button>
             </div>
         </div>
 
         <div id="question-screen" class="screen">
             <div class="content">
-                <h2 class="big-question">Quer continuar sendo minha namorada?</h2>
-                <p class="subtitle">Celebrando nosso primeiro ano juntos... 💕</p>
+                <h2 class="big-question">Quer namorar comigo?</h2>
                 <div class="buttons-container">
-                    <button class="yes-btn" onclick="showLoveLetter()">Sim! ❤️</button>
+                    <button class="yes-btn" onclick="celebrateYes()">Sim! ❤️</button>
                     <button class="no-btn" id="no-btn" onclick="handleNo()">Não</button>
                 </div>
+                <div class="celebration-message hidden" id="celebration-message">
+                    <h2 class="celebration-text">Eu te amo tanto! 🎉</h2>
+                    <p class="celebration-subtitle">Quero te namorar pra sempre! 💕</p>
+                    <p class="music-intro-text" id="music-text-1" style="opacity: 0; transform: translateY(20px); transition: opacity 1.2s ease, transform 1.2s ease;">Achei tão precioso você gravar nossas músicas</p>
+                    <p class="music-intro-text" id="music-text-2" style="opacity: 0; transform: translateY(20px); transition: opacity 1.2s ease, transform 1.2s ease;">que decidi fazer uma versão novinha delas só pra você 🥺</p>
+                    <button class="music-link-btn" id="music-btn" onclick="nextScreen('music-screen')" style="opacity: 0; transform: translateY(20px); transition: opacity 1.2s ease, transform 1.2s ease;">Caranguejo no Aquário 2.0 🦀</button>
+                </div>
+                <div class="fireworks-container" id="fireworks-container"></div>
             </div>
         </div>
 
@@ -93,11 +123,14 @@
             <div class="content love-letter">
                 <h2>Meu Amor...</h2>
                 <div class="letter-content">
-                    <p>Faz um ano desde que você entrou na minha vida e mudou tudo.</p>
-                    <p>Cada dia ao seu lado é uma nova aventura, cada momento é especial.</p>
-                    <p>Você me faz sorrir quando estou triste, me faz rir quando preciso, e me faz sentir amado todos os dias.</p>
-                    <p>Obrigado por ser quem você é, por me aceitar como eu sou, e por tornar minha vida infinitamente melhor.</p>
-                    <p>Aqui está para muitos mais anos juntos, criando memórias, compartilhando sonhos e construindo nosso futuro.</p>
+                    <p>Faz um ano desde que você entrou de vez na minha vida e mudou tudo.</p>
+                    <p>Cada dia ao seu lado é uma aventura nova, cada momento é o melhor momento do mundo, dos shows onde metralham dildos em pessoas penduradas às simples idas na padaria.</p>
+                    <p>Você me faz sorrir quando to triste(e quando to feliz), me faz gargalhar o tempo todo e me faz sentir muito amado e especial.</p>
+                    <p>Me sinto privilegiado de verdade por poder partilhar a vida com você, absorver e participar desse seu jeito tão sensível de enxergar o mundo.</p>
+                    <p>Espero muito mais passeios, clubes do livro de livros ruins, recarregadas de bateria após semanas difíceis, chameguinhos pela manhã, tardes na redinha fazendo palavra cruzada, mentiras pra estranhos na rua e, mais ainda, os dias comuns(que você sempre da um jeito de transformar em únicos).</p>
+                    <p>Obrigado por ser quem você é, por gostar de mim como eu sou, e por tornar minha vida infinitamente melhor.</p>
+                    <p>Quero ficar muitos mais anos junto de você, Brendinha. Criando memórias, compartilhando sonhos e construindo um futuro só nosso.</p>
+                    <p>Te celebro todos os dias.</p>
                     <p class="signature">Te amo mais do que palavras podem expressar ❤️</p>
                     <div class="counter-container">
                         <p class="counter-label">Juntos há:</p>
@@ -121,7 +154,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="music-link-btn" onclick="nextScreen('music-screen')">🎵 Ouvir Nossa Playlist 🎵</button>
+                <button onclick="nextScreen('question-screen')">Continuar ❤️</button>
                 <div class="hearts-animation">
                     <span class="heart">❤️</span>
                     <span class="heart">💕</span>
@@ -149,11 +182,11 @@
 
         <div id="music-screen" class="screen">
             <div class="content music-player">
-                <h2>Nossa Playlist ❤️</h2>
-                <p class="subtitle">Músicas que marcaram nossa história</p>
+                <h2>🦀 ♒ ❤️</h2>
+                <p class="subtitle">Músicas que marcaram nosso amor</p>
 
                 <div class="music-list">
-                    <div class="song-item" data-song="green-day-last-night-on-earth">
+                    <div class="song-item" data-song="green-day-last-night-on-earth" onclick="playSong('green-day-last-night-on-earth')">
                         <div class="song-info">
                             <div class="song-icon">🎸</div>
                             <div class="song-details">
@@ -161,10 +194,10 @@
                                 <div class="song-artist">Green Day</div>
                             </div>
                         </div>
-                        <button class="play-btn" onclick="playSong('green-day-last-night-on-earth')">▶️</button>
+                        <button class="play-btn">▶️</button>
                     </div>
 
-                    <div class="song-item" data-song="maroon-5-she-will-be-loved">
+                    <div class="song-item" data-song="maroon-5-she-will-be-loved" onclick="playSong('maroon-5-she-will-be-loved')">
                         <div class="song-info">
                             <div class="song-icon">💕</div>
                             <div class="song-details">
@@ -172,10 +205,10 @@
                                 <div class="song-artist">Maroon 5</div>
                             </div>
                         </div>
-                        <button class="play-btn" onclick="playSong('maroon-5-she-will-be-loved')">▶️</button>
+                        <button class="play-btn">▶️</button>
                     </div>
 
-                    <div class="song-item" data-song="plain-white-ts-hey-there-delilah">
+                    <div class="song-item" data-song="plain-white-ts-hey-there-delilah" onclick="playSong('plain-white-ts-hey-there-delilah')">
                         <div class="song-info">
                             <div class="song-icon">🎵</div>
                             <div class="song-details">
@@ -183,10 +216,10 @@
                                 <div class="song-artist">Plain White T's</div>
                             </div>
                         </div>
-                        <button class="play-btn" onclick="playSong('plain-white-ts-hey-there-delilah')">▶️</button>
+                        <button class="play-btn">▶️</button>
                     </div>
 
-                    <div class="song-item" data-song="foo-fighters-times-like-these">
+                    <div class="song-item" data-song="foo-fighters-times-like-these" onclick="playSong('foo-fighters-times-like-these')">
                         <div class="song-info">
                             <div class="song-icon">🎤</div>
                             <div class="song-details">
@@ -194,10 +227,10 @@
                                 <div class="song-artist">Foo Fighters</div>
                             </div>
                         </div>
-                        <button class="play-btn" onclick="playSong('foo-fighters-times-like-these')">▶️</button>
+                        <button class="play-btn">▶️</button>
                     </div>
 
-                    <div class="song-item" data-song="los-hermanos-ultimo-romance">
+                    <div class="song-item" data-song="los-hermanos-ultimo-romance" onclick="playSong('los-hermanos-ultimo-romance')">
                         <div class="song-info">
                             <div class="song-icon">🎼</div>
                             <div class="song-details">
@@ -205,10 +238,10 @@
                                 <div class="song-artist">Los Hermanos</div>
                             </div>
                         </div>
-                        <button class="play-btn" onclick="playSong('los-hermanos-ultimo-romance')">▶️</button>
+                        <button class="play-btn">▶️</button>
                     </div>
 
-                    <div class="song-item" data-song="pearl-jam-just-breathe">
+                    <div class="song-item" data-song="pearl-jam-just-breathe" onclick="playSong('pearl-jam-just-breathe')">
                         <div class="song-info">
                             <div class="song-icon">🎧</div>
                             <div class="song-details">
@@ -216,10 +249,10 @@
                                 <div class="song-artist">Pearl Jam</div>
                             </div>
                         </div>
-                        <button class="play-btn" onclick="playSong('pearl-jam-just-breathe')">▶️</button>
+                        <button class="play-btn">▶️</button>
                     </div>
 
-                    <div class="song-item" data-song="oasis-wonderwall">
+                    <div class="song-item" data-song="oasis-wonderwall" onclick="playSong('oasis-wonderwall')">
                         <div class="song-info">
                             <div class="song-icon">🌟</div>
                             <div class="song-details">
@@ -227,10 +260,10 @@
                                 <div class="song-artist">Oasis</div>
                             </div>
                         </div>
-                        <button class="play-btn" onclick="playSong('oasis-wonderwall')">▶️</button>
+                        <button class="play-btn">▶️</button>
                     </div>
 
-                    <div class="song-item" data-song="copeland-have-i-always-loved-you">
+                    <div class="song-item" data-song="copeland-have-i-always-loved-you" onclick="playSong('copeland-have-i-always-loved-you')">
                         <div class="song-info">
                             <div class="song-icon">💫</div>
                             <div class="song-details">
@@ -238,7 +271,21 @@
                                 <div class="song-artist">Copeland</div>
                             </div>
                         </div>
-                        <button class="play-btn" onclick="playSong('copeland-have-i-always-loved-you')">▶️</button>
+                        <button class="play-btn">▶️</button>
+                    </div>
+                </div>
+
+                <div class="audio-controls">
+                    <button class="control-btn" onclick="rewindAudio()" id="rewind-btn" disabled>⏪</button>
+                    <button class="control-btn play-pause-btn" onclick="togglePlayPause()" id="play-pause-btn" disabled>▶️</button>
+                    <button class="control-btn" onclick="forwardAudio()" id="forward-btn" disabled>⏩</button>
+                </div>
+
+                <div class="progress-container" id="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                    <div class="progress-time">
+                        <span id="current-time">0:00</span>
+                        <span id="duration">0:00</span>
                     </div>
                 </div>
 
